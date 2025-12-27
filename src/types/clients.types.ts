@@ -13,5 +13,6 @@ export interface extrait_clients {
     credit: string;
     debit: string;
     solde_final: string;
+    solde_progressive:string;
   }
   

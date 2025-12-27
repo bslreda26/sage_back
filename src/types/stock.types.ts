@@ -3,11 +3,22 @@ export interface stocks {
   article_reference: string;
   article_designation: string;
   article_famille: string;
-  article_cmup : number;
-  article_prix_ttc: number;
+  famille_code: string;
   article_quantity: number;
-  total_cmup: number; //CMUP
+  depot_intitule: string;
+  depot_code: string;
+}
+
+export interface valeur_stock {
+  //parms:article_reference,date,famille
+  article_reference: string;
+  article_designation: string;
+  article_famille: string;
+  article_cmup: number;
+  article_prix_ttc: number;
+  total_cmup: number;
   total_ttc: number;
+  article_quantity: number;
 }
 
 export interface rotation_stock {
