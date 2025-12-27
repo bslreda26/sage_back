@@ -1,7 +1,7 @@
 import express, { type Request, type Response, type NextFunction } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import reportRoutes from './routes/reports.js';
+import stocksRoutes from './routes/stocks.js';
 import { closeConnection } from './config/database.js';
 
 // Load environment variables
@@ -26,7 +26,7 @@ app.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', message: 'Server is running' });
 });
 
-app.use('/api/reports', reportRoutes);
+app.use('/api/stocks', stocksRoutes);
 
 // 404 handler
 app.use((req: Request, res: Response) => {
@@ -63,7 +63,7 @@ process.on('SIGINT', async () => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   console.log(`Health check: http://localhost:${PORT}/health`);
-  console.log(`Reports API: http://localhost:${PORT}/api/reports`);
+  console.log(`Stocks API: http://localhost:${PORT}/api/stocks`);
 });
 
 export default app;
