@@ -28,9 +28,9 @@ INNER JOIN F_DEPOT ON F_DEPOT.DE_NO = F_ARTSTOCK.DE_NO
     `;
 
         await pool.request().query(createViewQuery);
-        console.log('✓ V_STOCK view created/updated successfully');
+        console.log('✓ STOCK view created/updated successfully');
     } catch (error) {
-        console.error('✗ Error creating V_STOCK view:', error);
+        console.error('✗ Error creating STOCK view:', error);
         throw error;
     }
 }

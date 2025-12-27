@@ -1,12 +1,12 @@
 import { getConnection, closeConnection } from '../config/database.js';
-import { createStockView } from '../views_migrations/stock.js';
+import { stocks } from '../views_migrations/stock.js';
 
 /**
  * Array of all migration functions to run
  * Add new migrations here as you create them
  */
 const migrations = [
-  { name: 'createStockView', fn: createStockView },
+  { name: 'createStockView', fn: stocks },
   // Add more migrations here as you create them
   // Example: { name: 'createOtherView', fn: createOtherView },
 ];
