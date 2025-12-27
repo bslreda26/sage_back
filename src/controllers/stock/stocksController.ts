@@ -8,7 +8,7 @@ export class StocksController {
    */
   async getStocks(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { article_reference, depot, date, famille } = req.query;
+      const { article_reference, depot, date, famille, page, pageSize } = req.body;
       
       const params: Record<string, unknown> = {};
       if (article_reference) params.article_reference = article_reference as string;
@@ -16,11 +16,15 @@ export class StocksController {
       if (date) params.date = date as string;
       if (famille) params.famille = famille as string;
 
-      const data = await stocksService.getStocks(params);
+      // Parse pagination parameters with defaults
+      const pageNumber = page && !isNaN(Number(page)) && Number(page) > 0 ? Number(page) : 1;
+      const pageSizeNumber = pageSize && !isNaN(Number(pageSize)) && Number(pageSize) > 0 ? Number(pageSize) : 10;
+
+      const result = await stocksService.getStocks(params, pageNumber, pageSizeNumber);
       
       res.json({
         success: true,
-        data,
+        ...result,
       });
     } catch (error) {
       next(error);
