@@ -3,12 +3,12 @@ import { getConnection, closeConnection } from '../config/database.js';
 /**
  * Creates or alters the V_STOCK view
  */
-export async function createStockView(): Promise<void> {
+export async function stocks(): Promise<void> {
     const pool = await getConnection();
 
     try {
         const createViewQuery = `
-     CREATE  OR ALTER VIEW  V_STOCK 
+     CREATE  OR ALTER VIEW  STOCK 
 AS
 SELECT 
 F_ARTICLE.AR_REF AS article_reference,
