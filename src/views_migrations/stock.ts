@@ -3,12 +3,12 @@ import { getConnection, closeConnection } from '../config/database.js';
 /**
  * Creates or alters the V_STOCK view
  */
-export async function stocks(): Promise<void> {
+export async function V_STOCK(): Promise<void> {
     const pool = await getConnection();
 
     try {
         const createViewQuery = `
-     CREATE  OR ALTER VIEW  STOCK 
+     CREATE  OR ALTER VIEW  V_STOCK 
 AS
 SELECT 
 F_ARTICLE.AR_REF AS article_reference,
@@ -28,9 +28,9 @@ INNER JOIN F_DEPOT ON F_DEPOT.DE_NO = F_ARTSTOCK.DE_NO
     `;
 
         await pool.request().query(createViewQuery);
-        console.log('✓ STOCK view created/updated successfully');
+        console.log('✓ V_STOCK view created/updated successfully');
     } catch (error) {
-        console.error('✗ Error creating STOCK view:', error);
+        console.error('✗ Error creating V_STOCK view:', error);
         throw error;
     }
 }
