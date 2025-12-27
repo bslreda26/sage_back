@@ -9,6 +9,16 @@ export interface stocks {
   famille_code: string;
 }
 
+
+export interface valeur_stock {
+  //parms:article_reference,depot_code,famille_code
+  article_reference: string;
+  depot_code: string;
+  famille_code: string;
+  stock_valeur: number;
+  stock_cmup: number;
+}
+
 export interface rotation_stock {
   //parms:article_reference,date_debut,date_fin 
   article_reference: string;
